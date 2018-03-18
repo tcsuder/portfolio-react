@@ -14,16 +14,17 @@ function NameBanner({didScroll, changeImage, defaultImage}) {
           background-position: center;
           background-repeat: no-repeat;
           background-size: cover;
-          height: 300px;
+          height: 275px;
         }
         h1.title {
           background: #fff;
-          border-bottom: 20px solid white;
+          border-bottom: 10px solid #524B4C;
           font-family: 'Kameron', serif;
           font-size: 12em;
-          line-height: .7em;
+          line-height: .65em;
           margin: 0 auto;
           mix-blend-mode: screen;
+          padding-bottom: 20px;
         }
         span.last-name {
           font-size: .9em;
@@ -37,7 +38,7 @@ function NameBanner({didScroll, changeImage, defaultImage}) {
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
-            height: 300px;
+            height: 275px;
           }
         `}</style>}
       <h1 className="title">TYLER <span className="last-name">SUDERMAN</span></h1>
