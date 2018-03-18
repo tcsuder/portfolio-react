@@ -51,20 +51,17 @@ class App extends Component {
             margin: 0 auto;
             width: 1200px;
           }
-          div.links {
-            height: 200px;
-          }
         `}</style>
 
         <header>
-          <div className="links">
-
-          </div>
           <NameBanner
             didScroll={this.state.didScroll}
             changeImage={this.state.photo}
             defaultImage={this.state.imageList.colorHood}/>
           <Nav />
+          <div style={{height:'400px', fontSize: '2em'}}>
+
+          </div>
         </header>
       </main>
     );

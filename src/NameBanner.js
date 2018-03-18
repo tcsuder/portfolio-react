@@ -8,16 +8,16 @@ function NameBanner({didScroll, changeImage, defaultImage}) {
     <div className="hood">
       <style jsx>{`
         div.hood {
+          margin-top: 100px;
           background: linear-gradient(rgba(0,0,0,.8), rgba(251,222,222,.8)), url(${defaultImage});
           background-attachment: fixed;
           background-position: center;
           background-repeat: no-repeat;
           background-size: cover;
-          height: 320px;
+          height: 300px;
         }
         h1.title {
           background: #fff;
-          text-align: left;
           border-bottom: 20px solid white;
           font-family: 'Kameron', serif;
           font-size: 12em;
@@ -26,7 +26,7 @@ function NameBanner({didScroll, changeImage, defaultImage}) {
           mix-blend-mode: screen;
         }
         span.last-name {
-          font-size: .8em;
+          font-size: .9em;
         }
       `}</style>
       {didScroll &&
@@ -37,7 +37,7 @@ function NameBanner({didScroll, changeImage, defaultImage}) {
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
-            height: 350px;
+            height: 300px;
           }
         `}</style>}
       <h1 className="title">TYLER <span className="last-name">SUDERMAN</span></h1>

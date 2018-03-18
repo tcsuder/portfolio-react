@@ -6,9 +6,14 @@ function Project({didScroll, photo}) {
     <div className="project">
       <style jsx>{`
         div.project {
-          
+
         }
       `}</style>
+      <div className="project-image">
+
+      </div>
+      <div className="project-title"></div>
+      <div className="project-desciption"></div>
     </div>
   );
 }
