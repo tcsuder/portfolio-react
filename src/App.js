@@ -57,8 +57,8 @@ class App extends Component {
             height: 400px;
           }
           .statement p {
-            background: #fff;
-            font-size: 3em;
+            color: #434343;
+            font-size: 2em;
             font-family: sans-serif;
             font-weight: bold;
             mix-blend-mode: screen;
@@ -74,7 +74,7 @@ class App extends Component {
             didScroll={this.state.didScroll}
             photo={this.state.photo}/>
           <div className="statement">
-            {/* <p>Interested in society, technology, and the space they fill</p> */}
+            {/* <p>Coder, Teacher, Outdoorsman</p> */}
           </div>
         </header>
       </main>
