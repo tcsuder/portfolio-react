@@ -17,12 +17,16 @@ function NameBanner({didScroll, changeImage, defaultImage}) {
         }
         h1.title {
           background: #fff;
+          text-align: center;
           border-bottom: 40px solid white;
           font-family: 'Kameron', serif;
-          font-size: 12em;
+          font-size: 15em;
           line-height: .75em;
           margin: 0 auto;
           mix-blend-mode: screen;
+        }
+        span.last-name {
+          font-size: 9em;
         }
       `}</style>
       {didScroll &&
@@ -36,7 +40,7 @@ function NameBanner({didScroll, changeImage, defaultImage}) {
             height: 350px;
           }
         `}</style>}
-      <h1 className="title">TYLER SUDER<span className="minimize">MAN</span></h1>
+      <h1 className="title">TYLER <span className="last-name">S</span>UDERMAN</h1>
     </div>
   );
 }
