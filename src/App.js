@@ -21,7 +21,7 @@ class App extends Component {
     super(props)
     this.state = {
       didScroll: false,
-      photo: images[colorHood],
+      photo: images.colorHood,
       imageList: images,
       changeFrequency: 400
     }
@@ -72,7 +72,8 @@ class App extends Component {
           </div>
           <NameBanner
             didScroll={this.state.didScroll}
-            photo={this.state.photo}/>
+            changeImage={this.state.photo}
+            defaultImage={this.state.imageList.colorHood}/>
           <div className="statement">
             {/* <p>Coder, Teacher, Outdoorsman</p> */}
           </div>

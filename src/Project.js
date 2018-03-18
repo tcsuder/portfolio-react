@@ -1,14 +1,12 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import colorHood from './images/colorHood.jpg';
 
-
-function NameBanner({didScroll, changeImage, defaultImage}) {
+function NameBanner({didScroll, photo}) {
   return (
     <div className="hood">
       <style jsx>{`
         div.hood {
-          background: linear-gradient(rgba(0,0,0,.8), rgba(251,222,222,.8)), url(${defaultImage});
+          background: linear-gradient(rgba(0,0,0,.8), rgba(251,222,222,.8)), url(${colorHood});
           background-attachment: fixed;
           background-position: center;
           background-repeat: no-repeat;
@@ -28,7 +26,7 @@ function NameBanner({didScroll, changeImage, defaultImage}) {
       {didScroll &&
         <style jsx>{`
           div.hood {
-            background: linear-gradient(rgba(0,0,0,.8), rgba(251,222,222,.8)), url(${changeImage});
+            background: linear-gradient(rgba(0,0,0,.8), rgba(251,222,222,.8)), url(${photo});
             background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
@@ -42,8 +40,7 @@ function NameBanner({didScroll, changeImage, defaultImage}) {
 }
 
 NameBanner.propTypes = {
-  changeImage: propTypes.string.isRequired,
-  defaultImage: propTypes.string.isRequired,
+  photo: propTypes.string.isRequired,
   didScroll: propTypes.bool.isRequired
 }
 
