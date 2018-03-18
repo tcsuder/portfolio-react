@@ -13,20 +13,20 @@ function NameBanner({didScroll, changeImage, defaultImage}) {
           background-position: center;
           background-repeat: no-repeat;
           background-size: cover;
-          height: 350px;
+          height: 320px;
         }
         h1.title {
           background: #fff;
-          text-align: center;
-          border-bottom: 40px solid white;
+          text-align: left;
+          border-bottom: 20px solid white;
           font-family: 'Kameron', serif;
-          font-size: 15em;
-          line-height: .75em;
+          font-size: 12em;
+          line-height: .7em;
           margin: 0 auto;
           mix-blend-mode: screen;
         }
         span.last-name {
-          font-size: 9em;
+          font-size: .8em;
         }
       `}</style>
       {didScroll &&
@@ -40,7 +40,7 @@ function NameBanner({didScroll, changeImage, defaultImage}) {
             height: 350px;
           }
         `}</style>}
-      <h1 className="title">TYLER <span className="last-name">S</span>UDERMAN</h1>
+      <h1 className="title">TYLER <span className="last-name">SUDERMAN</span></h1>
     </div>
   );
 }

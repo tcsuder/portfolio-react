@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NameBanner from './NameBanner';
+import Nav from './Nav';
 import waterfall from './images/waterfall.jpg';
 import trailSunset from './images/trailSunset.jpg';
 import colorHood from './images/colorHood.jpg';
@@ -53,17 +54,6 @@ class App extends Component {
           div.links {
             height: 200px;
           }
-          div.statement {
-            height: 400px;
-          }
-          .statement p {
-            color: #434343;
-            font-size: 2em;
-            font-family: sans-serif;
-            font-weight: bold;
-            mix-blend-mode: screen;
-          }
-
         `}</style>
 
         <header>
@@ -74,9 +64,7 @@ class App extends Component {
             didScroll={this.state.didScroll}
             changeImage={this.state.photo}
             defaultImage={this.state.imageList.colorHood}/>
-          <div className="statement">
-            {/* <p>Coder, Teacher, Outdoorsman</p> */}
-          </div>
+          <Nav />
         </header>
       </main>
     );
