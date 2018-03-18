@@ -2,7 +2,7 @@ import React from 'react';
 import colorHood from './images/colorHood.jpg';
 
 
-function MyName({didScroll, photo}) {
+function NameBanner({didScroll, photo}) {
   return (
     <div className="hood">
       <style jsx>{`
@@ -40,7 +40,7 @@ function MyName({didScroll, photo}) {
   );
 }
 
-MyName.propTypes = {
+NameBanner.propTypes = {
 }
 
-export default MyName;
+export default NameBanner;
