@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MyName from './MyName';
+import NameBanner from './NameBanner';
 import waterfall from './images/waterfall.jpg';
 import trailSunset from './images/trailSunset.jpg';
 import colorHood from './images/colorHood.jpg';
@@ -21,8 +21,9 @@ class App extends Component {
     super(props)
     this.state = {
       didScroll: false,
-      photo: images.city,
+      photo: images[colorHood],
       imageList: images,
+      changeFrequency: 400
     }
     this.checkDidScroll = this.checkDidScroll.bind(this)
   }
@@ -57,7 +58,7 @@ class App extends Component {
           }
           .statement p {
             background: #fff;
-            font-size: 4em;
+            font-size: 3em;
             font-family: sans-serif;
             font-weight: bold;
             mix-blend-mode: screen;
@@ -69,7 +70,7 @@ class App extends Component {
           <div className="links">
 
           </div>
-          <MyName
+          <NameBanner
             didScroll={this.state.didScroll}
             photo={this.state.photo}/>
           <div className="statement">
@@ -88,7 +89,7 @@ class App extends Component {
         this.setState({ didScroll: false, photo: this.state.imageList[randomKey]});
         console.log('You scrolled');
       }
-    }, 50)
+    }, this.state.changeFrequency)
   }
 }
 
