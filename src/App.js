@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NameBanner from './NameBanner';
 import Nav from './Nav';
+import Project from './Project';
 import waterfall from './images/waterfall.jpg';
 import trailSunset from './images/trailSunset.jpg';
 import colorHood from './images/colorHood.jpg';
@@ -24,7 +25,7 @@ class App extends Component {
       didScroll: false,
       photo: images.colorHood,
       imageList: images,
-      changeFrequency: 400
+      changeFrequency: 50
     }
     this.checkDidScroll = this.checkDidScroll.bind(this)
   }
@@ -48,8 +49,7 @@ class App extends Component {
         `}</style>
         <style jsx>{`
           main {
-            margin: 0 auto;
-            width: 1200px;
+      
           }
         `}</style>
 
@@ -59,6 +59,7 @@ class App extends Component {
             changeImage={this.state.photo}
             defaultImage={this.state.imageList.colorHood}/>
           <Nav />
+          <Project/>
           <div style={{height:'400px', fontSize: '2em'}}>
 
           </div>
@@ -69,11 +70,11 @@ class App extends Component {
 
   checkDidScroll() {
     setInterval(() => {
-      const keys = Object.keys(this.state.imageList);
-      const randomKey = keys[Math.floor(Math.random() * (Object.keys(this.state.imageList).length - 0))];
+      console.log("check");
       if(this.state.didScroll) {
+        const keys = Object.keys(this.state.imageList);
+        const randomKey = keys[Math.floor(Math.random() * (Object.keys(this.state.imageList).length - 0))];
         this.setState({ didScroll: false, photo: this.state.imageList[randomKey]});
-        console.log('You scrolled');
       }
     }, this.state.changeFrequency)
   }

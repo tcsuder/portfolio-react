@@ -33,7 +33,6 @@ function Nav({didScroll, photo}) {
       <div className="nav-link">
         <h4>Contact</h4>
       </div>
-      {/* <p>Coder, Teacher, Outdoorsman</p> */}
     </div>
   );
 }
