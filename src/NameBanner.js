@@ -3,13 +3,13 @@ import propTypes from 'prop-types';
 import colorHood from './images/colorHood.jpg';
 
 
-function NameBanner({didScroll, changeImage, defaultImage}) {
+function NameBanner({ image }) {
   return (
     <div className="hood">
       <style jsx>{`
         div.hood {
           margin-top: 100px;
-          background: linear-gradient(rgba(0,0,0,.8), rgba(251,222,222,.8)), url(${defaultImage});
+          background: linear-gradient(rgba(0,0,0,.6), rgb(251,222,222)), url(${image});
           background-attachment: fixed;
           background-position: center;
           background-repeat: no-repeat;
@@ -18,38 +18,24 @@ function NameBanner({didScroll, changeImage, defaultImage}) {
         }
         h1.title {
           background: #fff;
-          font-family: 'Kameron', serif;
           font-size: 12em;
-          line-height: .65em;
+          line-height: .7em;
           margin: 0 auto;
           mix-blend-mode: screen;
-          padding-top: 10px;
+          padding-top: 20px;
           padding-bottom: 20px;
         }
         span.last-name {
-          font-size: .9em;
+          font-size: .8em;
         }
       `}</style>
-      {didScroll &&
-        <style jsx>{`
-          div.hood {
-            background: linear-gradient(rgba(0,0,0,.8), rgba(251,222,222,.8)), url(${changeImage});
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            height: 350px;
-          }
-        `}</style>}
       <h1 className="title">TYLER <span className="last-name">SUDERMAN</span></h1>
     </div>
   );
 }
 
 NameBanner.propTypes = {
-  changeImage: propTypes.string.isRequired,
-  defaultImage: propTypes.string.isRequired,
-  didScroll: propTypes.bool.isRequired
+  image: propTypes.string.isRequired
 }
 
 export default NameBanner;

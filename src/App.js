@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import NameBanner from './NameBanner';
 import Nav from './Nav';
 import Project from './Project';
+
 import waterfall from './images/waterfall.jpg';
 import trailSunset from './images/trailSunset.jpg';
 import colorHood from './images/colorHood.jpg';
@@ -31,6 +32,9 @@ class App extends Component {
   }
 
   componentDidMount() {
+    const keys = Object.keys(this.state.imageList);
+    const randomKey = keys[Math.floor(Math.random() * (Object.keys(this.state.imageList).length - 0))];
+    this.setState({photo: this.state.imageList[randomKey]});
     document.title = "Portfolio - Tyler Suderman";
     document.onscroll = () => { this.setState({didScroll:true}) }
     this.checkDidScroll()
@@ -39,25 +43,26 @@ class App extends Component {
   render() {
     return (
       <main>
-        <link href="https://fonts.googleapis.com/css?Kameron:700" rel="stylesheet"/>
         <style global jsx>{`
+          @font-face {
+              font-family: 'Amiko';
+              src: url(${require('./fonts/Amiko-Bold.eot')});
+              src: url(${require('./fonts/Amiko-Bold.eot?#iefix')}) format('embedded-opentype'),
+                  url(${require('./fonts/Amiko-Bold.woff2')}) format('woff2'),
+                  url(${require('./fonts/Amiko-Bold.woff')}) format('woff');
+              font-weight: bold;
+              font-style: normal;
+          }
           body {
-            font-family: sans-serif;
+            font-family: 'Amiko';
             margin: 0;
             padding: 0;
-          }
-        `}</style>
-        <style jsx>{`
-          main {
-      
           }
         `}</style>
 
         <header>
           <NameBanner
-            didScroll={this.state.didScroll}
-            changeImage={this.state.photo}
-            defaultImage={this.state.imageList.colorHood}/>
+            image={this.state.imageList.colorHood}/>
           <Nav />
           <Project/>
           <div style={{height:'400px', fontSize: '2em'}}>
@@ -72,9 +77,8 @@ class App extends Component {
     setInterval(() => {
       console.log("check");
       if(this.state.didScroll) {
-        const keys = Object.keys(this.state.imageList);
-        const randomKey = keys[Math.floor(Math.random() * (Object.keys(this.state.imageList).length - 0))];
-        this.setState({ didScroll: false, photo: this.state.imageList[randomKey]});
+
+
       }
     }, this.state.changeFrequency)
   }
