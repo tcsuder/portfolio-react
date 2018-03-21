@@ -25,7 +25,7 @@ class App extends Component {
       didScroll: false,
       photo: images.colorHood,
       imageList: images,
-      changeFrequency: 50
+      changeFrequency: 2000
     }
     this.checkDidScroll = this.checkDidScroll.bind(this)
   }
@@ -61,6 +61,7 @@ class App extends Component {
 
         <header>
           <NameBanner
+            didScroll={this.state.didScroll}
             image={this.state.photo}/>
           <Nav
             image={this.state.photo}/>
@@ -75,12 +76,15 @@ class App extends Component {
 
   checkDidScroll() {
     setInterval(() => {
-      console.log("check");
       if(this.state.didScroll) {
-
-
+        this.pauseSetState()
       }
     }, this.state.changeFrequency)
+  }
+  pauseSetState() {
+    setTimeout(() => {
+      this.setState({didScroll: false});
+    }, 5000);
   }
 }
 

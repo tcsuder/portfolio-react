@@ -3,13 +3,12 @@ import propTypes from 'prop-types';
 import colorHood from './images/colorHood.jpg';
 
 
-function NameBanner({ image }) {
+function NameBanner({ image, didScroll }) {
   return (
     <div className="hood">
       <style jsx>{`
         div.hood {
-          margin-top: 100px;
-          background: linear-gradient(rgba(251,222,222,.9), rgba(0,0,0,1)), url(${image});
+          background: linear-gradient(rgba(0,0,0,.6), rgba(251,222,222,1)), url(${image});
           background-attachment: fixed;
           background-position: center;
           background-repeat: no-repeat;
@@ -24,11 +23,21 @@ function NameBanner({ image }) {
           mix-blend-mode: screen;
           padding-top: 20px;
           padding-bottom: 20px;
+          transition: 10s;
         }
         span.last-name {
           font-size: .8em;
         }
       `}</style>
+      {didScroll &&
+        <style jsx>{`
+          h1.title {
+            background: transparent;
+            color: #fff;
+            transition: 10s;
+          }
+        `}</style>
+      }
       <h1 className="title">TYLER <span className="last-name">SUDERMAN</span></h1>
     </div>
   );
