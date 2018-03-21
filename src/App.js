@@ -11,7 +11,6 @@ import snowRoad from './images/snowRoad.jpg';
 import springHood from './images/springHood.jpg';
 
 const images = {
-  waterfall,
   trailSunset,
   colorHood,
   snowLake,
@@ -62,8 +61,9 @@ class App extends Component {
 
         <header>
           <NameBanner
-            image={this.state.imageList.colorHood}/>
-          <Nav />
+            image={this.state.photo}/>
+          <Nav
+            image={this.state.photo}/>
           <Project/>
           <div style={{height:'400px', fontSize: '2em'}}>
 

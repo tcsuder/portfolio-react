@@ -1,13 +1,18 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-function Nav({didScroll, photo}) {
+function Nav({didScroll, image}) {
   return (
     <div className="nav">
       <style jsx>{`
         .nav {
           display: flex;
           justify-content: flex-start;
+          background: linear-gradient(rgba(0,0,0,.6), rgba(251,222,222,1)), url(${image});
+          background-attachment: fixed;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
         }
         .nav-link {
           width: 300px;
@@ -16,10 +21,11 @@ function Nav({didScroll, photo}) {
           cursor: pointer;
         }
         .nav h4 {
-          color: #524B4C;
+          color: #fff;
           font-size: 2em;
           font-family: sans-serif;
           font-weight: bold;
+          margin-bottom: 0px;
           mix-blend-mode: screen;
         }
 

@@ -9,12 +9,12 @@ function NameBanner({ image }) {
       <style jsx>{`
         div.hood {
           margin-top: 100px;
-          background: linear-gradient(rgba(0,0,0,.6), rgb(251,222,222)), url(${image});
+          background: linear-gradient(rgba(251,222,222,.9), rgba(0,0,0,1)), url(${image});
           background-attachment: fixed;
           background-position: center;
           background-repeat: no-repeat;
           background-size: cover;
-          height: 350px;
+          height: 300px;
         }
         h1.title {
           background: #fff;
