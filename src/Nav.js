@@ -30,6 +30,18 @@ function Nav({didScroll, image}) {
         }
 
       `}</style>
+
+      {/* <style jsx>{`
+        div.hood {
+          background: linear-gradient(rgba(0,0,0,.8), rgba(251,222,222,.8)), url(${changeImage});
+          background-attachment: fixed;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          height: 275px;
+        }
+      `}</style> */}
+
       <div className="nav-link">
         <h4>Projects</h4>
       </div>
