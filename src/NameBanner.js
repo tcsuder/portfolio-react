@@ -1,44 +1,34 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import colorHood from './images/colorHood.jpg';
 
-
-function NameBanner({ image, didScroll }) {
+function NameBanner({ image, opacity }) {
   return (
-    <div className="hood">
+    <div id="hood" className="hood">
       <style jsx>{`
         div.hood {
-          background: linear-gradient(rgba(0,0,0,.6), rgba(251,222,222,1)), url(${image});
+          background: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,0)), url(${image});
           background-attachment: fixed;
           background-position: center;
           background-repeat: no-repeat;
           background-size: cover;
-          height: 300px;
+          height: 600px;
+          overflow: hidden;
         }
         h1.title {
-          background: #fff;
-          font-size: 12em;
-          line-height: .7em;
-          margin: 0 auto;
+          background: rgba(255,255,255,${opacity});
+          color: rgba(0,0,0,1);
+          font-size: 18em;
+          line-height: .6em;
+          margin: 0;
           mix-blend-mode: screen;
-          padding-top: 20px;
-          padding-bottom: 20px;
-          transition: 10s;
+          padding-top: 150px;
+          transition: .5s;
         }
         span.last-name {
-          font-size: .8em;
+          font-size: .666em;
         }
       `}</style>
-      {didScroll &&
-        <style jsx>{`
-          h1.title {
-            background: transparent;
-            color: #fff;
-            transition: 10s;
-          }
-        `}</style>
-      }
-      <h1 className="title">TYLER <span className="last-name">SUDERMAN</span></h1>
+      <h1 id="title" className="title">tyler <span className="last-name">suderman</span></h1>
     </div>
   );
 }

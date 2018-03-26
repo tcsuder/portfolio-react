@@ -2,46 +2,32 @@ import React, { Component } from 'react';
 import NameBanner from './NameBanner';
 import Nav from './Nav';
 import Project from './Project';
+import defaultState from './defaultState';
 
-import waterfall from './images/waterfall.jpg';
-import trailSunset from './images/trailSunset.jpg';
-import colorHood from './images/colorHood.jpg';
-import snowLake from './images/snowLake.jpg';
-import snowRoad from './images/snowRoad.jpg';
-import springHood from './images/springHood.jpg';
-
-const images = {
-  trailSunset,
-  colorHood,
-  snowLake,
-  snowRoad,
-  springHood
+const initialState = () => {
+  return {
+    imageList: defaultState.imageList,
+    bannerOpacity: defaultState.bannerOpacity,
+    photo: defaultState.imageList['trail3']
+  }
 }
 
 class App extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      didScroll: false,
-      photo: images.colorHood,
-      imageList: images,
-      changeFrequency: 2000
-    }
-    this.checkDidScroll = this.checkDidScroll.bind(this)
+    this.state = initialState();
   }
 
   componentDidMount() {
-    const keys = Object.keys(this.state.imageList);
-    const randomKey = keys[Math.floor(Math.random() * (Object.keys(this.state.imageList).length - 0))];
-    this.setState({photo: this.state.imageList[randomKey]});
+    this.loadRandomImage();
     document.title = "Portfolio - Tyler Suderman";
-    document.onscroll = () => { this.setState({didScroll:true}) }
-    this.checkDidScroll()
+    this.checkScroll()
   }
 
   render() {
     return (
       <main>
+        <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet"/>
         <style global jsx>{`
           @font-face {
               font-family: 'Amiko';
@@ -53,20 +39,20 @@ class App extends Component {
               font-style: normal;
           }
           body {
-            font-family: 'Amiko';
+            font-family: 'Amiko', sans-serif;
             margin: 0;
             padding: 0;
           }
         `}</style>
-
         <header>
           <NameBanner
-            didScroll={this.state.didScroll}
+            opacity={this.state.bannerOpacity}
             image={this.state.photo}/>
           <Nav
+            opacity={this.state.bannerOpacity}
             image={this.state.photo}/>
           <Project/>
-          <div style={{height:'400px', fontSize: '2em'}}>
+          <div style={{height:'9000px', fontSize: '2em'}}>
 
           </div>
         </header>
@@ -74,17 +60,23 @@ class App extends Component {
     );
   }
 
-  checkDidScroll() {
-    setInterval(() => {
-      if(this.state.didScroll) {
-        this.pauseSetState()
-      }
-    }, this.state.changeFrequency)
+  loadRandomImage() {
+    const keys = Object.keys(this.state.imageList);
+    const randomKey = keys[Math.floor(Math.random() * (Object.keys(this.state.imageList).length - 0))];
+    this.setState({photo: this.state.imageList[randomKey]});
   }
-  pauseSetState() {
-    setTimeout(() => {
-      this.setState({didScroll: false});
-    }, 5000);
+
+  checkScroll() {
+    setInterval(() => {
+      const bannerBottom = document.getElementById('hood').getBoundingClientRect().bottom;
+      const slowDown = (bannerBottom - 150)/ 50;
+      if (slowDown < 10) {
+        const newOpacity = slowDown / 10;
+        this.setState({bannerOpacity: newOpacity});
+      } else {
+        this.setState({bannerOpacity: 1});
+      }
+    }, 10)
   }
 }
 

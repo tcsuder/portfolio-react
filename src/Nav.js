@@ -1,55 +1,57 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-function Nav({didScroll, image}) {
+function Nav({ image, opacity }) {
   return (
-    <div className="nav">
-      <style jsx>{`
-        .nav {
-          display: flex;
-          justify-content: flex-start;
-          background: linear-gradient(rgba(0,0,0,.6), rgba(251,222,222,1)), url(${image});
-          background-attachment: fixed;
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: cover;
-        }
-        .nav-link {
-          width: 300px;
-        }
-        .nav-link:hover {
-          cursor: pointer;
-        }
-        .nav h4 {
-          color: #fff;
-          font-size: 2em;
-          font-family: sans-serif;
-          font-weight: bold;
-          margin-bottom: 0px;
-          mix-blend-mode: screen;
-        }
+    <div>
+      <div id="nav" className="nav">
+        <style jsx>{`
+          .nav {
+            display: flex;
+            min-width: 720px;
+            background: linear-gradient(rgba(0, 0, 0,${10 - opacity}), rgba(0,0,0,0)), url(${image});
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100px;
+            transition: .2s;
+          }
+          .nav-link {
+            align-items: cener;
+            justify-content: center;
+            display: flex;
+            height: 100%;
+            width: 100%;
+          }
+          .nav-link:hover {
+            cursor: pointer;
+          }
+          .nav h4 {
+            padding-top: 25px;
+            background: #fff;
+            color: rgba(5,25,30,.8);
+            font-size: 2em;
+            height: 75%;
+            margin: 0;
+            min-width: 240px;
+            mix-blend-mode: screen;
+            text-align: center;
+            width: 33.33vw;
+            overflow: hidden;
+          }
 
-      `}</style>
+        `}</style>
 
-      {/* <style jsx>{`
-        div.hood {
-          background: linear-gradient(rgba(0,0,0,.8), rgba(251,222,222,.8)), url(${changeImage});
-          background-attachment: fixed;
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: cover;
-          height: 275px;
-        }
-      `}</style> */}
-
-      <div className="nav-link">
-        <h4>Projects</h4>
-      </div>
-      <div className="nav-link">
-        <h4>About</h4>
-      </div>
-      <div className="nav-link">
-        <h4>Contact</h4>
+        <div className="nav-link">
+          <h4>About</h4>
+        </div>
+        <div className="nav-link">
+          <h4>Projects</h4>
+        </div>
+        <div className="nav-link">
+          <h4>Contact</h4>
+        </div>
       </div>
     </div>
   );
