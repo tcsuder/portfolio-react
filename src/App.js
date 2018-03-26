@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import NameBanner from './NameBanner';
-import Nav from './Nav';
-import Project from './Project';
+import About from './About';
+import Projects from './Projects';
+import Contact from './Contact';
 import defaultState from './defaultState';
 
 const initialState = () => {
@@ -27,7 +28,6 @@ class App extends Component {
   render() {
     return (
       <main>
-        <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet"/>
         <style global jsx>{`
           @font-face {
               font-family: 'Amiko';
@@ -40,21 +40,47 @@ class App extends Component {
           }
           body {
             font-family: 'Amiko', sans-serif;
+            min-width: 600px;
             color: rgb(10,20,30);
             margin: 0;
             padding: 0;
+          }
+          content {
+            max-width: 1200px;
+          }
+          .section-container {
+            margin: 0 auto;
+            min-height: 600px;
+            padding-top: 100px;
+            width: 70%;
+          }
+          .section-title h2 {
+            font-size: 3em;
+            letter-spacing: -.05em;
+            line-height: .8em;
+            margin-bottom: 10px;
+          }
+          .section-title .underline {
+            width: 15%;
+            min-width: 100px;
+            max-width: 200px;
+            height: 15px;
+            background: rgb(10,20,30);
           }
         `}</style>
         <header>
           <NameBanner
             opacity={this.state.bannerOpacity}
             image={this.state.photo}/>
-
-          <Project/>
-          <div style={{height:'9000px', fontSize: '2em'}}>
-
-          </div>
         </header>
+        <content>
+          <Projects />
+
+          <About
+            image={this.state.photo}/>
+
+          <Contact />
+        </content>
       </main>
     );
   }
@@ -68,7 +94,7 @@ class App extends Component {
   checkScroll() {
     setInterval(() => {
       const bannerBottom = document.getElementById('hood').getBoundingClientRect().bottom;
-      const slowDown = (bannerBottom - 120)/ 50;
+      const slowDown = (bannerBottom - 130)/ 50;
       if (slowDown < 10) {
         const newOpacity = slowDown / 10;
         this.setState({bannerOpacity: newOpacity});

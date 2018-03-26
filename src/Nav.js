@@ -8,7 +8,7 @@ function Nav({ image, opacity }) {
         <style jsx>{`
           .nav {
             display: flex;
-            min-width: 720px;
+            min-width: 650px;
             background: linear-gradient(rgba(0, 0, 0,${10 - opacity}), rgba(0,0,0,0)), url(${image});
             background-attachment: fixed;
             background-position: center;

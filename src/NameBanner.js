@@ -18,6 +18,8 @@ function NameBanner({ image, opacity }) {
           background: rgba(255,255,255,${opacity});
           color: rgba(0,0,0,1);
           font-size: 18em;
+          font-family: 'Amiko';
+          letter-spacing: -.02em;
           line-height: .6em;
           margin: 0;
           mix-blend-mode: screen;
