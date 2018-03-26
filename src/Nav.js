@@ -44,13 +44,13 @@ function Nav({ image, opacity }) {
         `}</style>
 
         <div className="nav-link">
-          <h4>About</h4>
+          <h4>about</h4>
         </div>
         <div className="nav-link">
-          <h4>Projects</h4>
+          <h4>projects</h4>
         </div>
         <div className="nav-link">
-          <h4>Contact</h4>
+          <h4>contact</h4>
         </div>
       </div>
     </div>

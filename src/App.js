@@ -40,6 +40,7 @@ class App extends Component {
           }
           body {
             font-family: 'Amiko', sans-serif;
+            color: rgb(10,20,30);
             margin: 0;
             padding: 0;
           }
@@ -48,9 +49,7 @@ class App extends Component {
           <NameBanner
             opacity={this.state.bannerOpacity}
             image={this.state.photo}/>
-          <Nav
-            opacity={this.state.bannerOpacity}
-            image={this.state.photo}/>
+
           <Project/>
           <div style={{height:'9000px', fontSize: '2em'}}>
 
@@ -69,7 +68,7 @@ class App extends Component {
   checkScroll() {
     setInterval(() => {
       const bannerBottom = document.getElementById('hood').getBoundingClientRect().bottom;
-      const slowDown = (bannerBottom - 150)/ 50;
+      const slowDown = (bannerBottom - 120)/ 50;
       if (slowDown < 10) {
         const newOpacity = slowDown / 10;
         this.setState({bannerOpacity: newOpacity});

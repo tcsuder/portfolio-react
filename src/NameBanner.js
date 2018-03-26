@@ -6,12 +6,12 @@ function NameBanner({ image, opacity }) {
     <div id="hood" className="hood">
       <style jsx>{`
         div.hood {
-          background: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,0)), url(${image});
+          background: linear-gradient(rgba(10,20,30,.9), rgba(0,0,0,0)), url(${image});
           background-attachment: fixed;
           background-position: center;
           background-repeat: no-repeat;
           background-size: cover;
-          height: 600px;
+          height: 580px;
           overflow: hidden;
         }
         h1.title {
