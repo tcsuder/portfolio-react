@@ -30,7 +30,9 @@ function NameBanner({ image, opacity }) {
           font-size: .666em;
         }
       `}</style>
-      <h1 id="title" className="title">tyler <span className="last-name">suderman</span></h1>
+      <h1 id="title" className="title">tyler
+        <br/>
+      <span className="last-name">suderman</span></h1>
     </div>
   );
 }
