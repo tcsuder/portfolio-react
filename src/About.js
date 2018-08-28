@@ -15,7 +15,7 @@ function About({ image }) {
           background-size: cover;
         }
         .about-content {
-          padding-top: 50px;
+          padding-top: 100px;
           width: 50vw;
         }
         .about-content p {
@@ -30,7 +30,7 @@ function About({ image }) {
           line-height: 1em;
         }
         .break {
-          height: 15px;
+          height: 20px;
         }
         .mission {
           margin-top: 0;
