@@ -7,8 +7,10 @@ import defaultState from './defaultState';
 const initialState = () => {
   return {
     imageList: defaultState.imageList,
+    photo: defaultState.imageList['trail3'],
     bannerOpacity: defaultState.bannerOpacity,
-    photo: defaultState.imageList['trail3']
+    footerIsSticky: defaultState.footerIsSticky,
+    footerOpacity: defaultState.footerOpacity
   }
 }
 
@@ -42,45 +44,33 @@ class App extends Component {
           }
           body {
             font-family: 'Amiko', sans-serif;
-            min-width: 600px;
             color: rgb(10,20,30);
+            min-width: 700px;
             margin: 0;
             padding: 0;
           }
-          content {
-            max-width: 1200px;
-            margin: 0 auto;
+          #root, main, .section-container, .section {
+            min-width: inherit;
           }
           .section-container {
+            max-width: 1200px;
+            min-width: 700px;
             margin: 0 auto;
             min-height: 500px;
             padding-top: 20px;
             width: 70%;
           }
-          .section-title h2 {
-            font-size: 3em;
-            letter-spacing: -.05em;
-            line-height: .8em;
-            margin-bottom: 10px;
-            color: #36454f
-          }
-          .section-title .underline {
-            width: 100%;
-            max-width: 1000px;
-            height: 25px;
-            background: #36454f
+          .section {
+            padding-left: 20px;
           }
         `}</style>
-        <header>
-          <NameBanner
-            opacity={this.state.bannerOpacity}
-            image={this.state.photo}/>
-        </header>
-        <content>
-          <About
-            image={this.state.photo}/>
-        </content>
-        <Footer />
+        <NameBanner
+          opacity={this.state.bannerOpacity}
+          image={this.state.photo}/>
+        <About />
+        <Footer
+          isSticky={this.state.footerIsSticky}
+          opacity={this.state.footerOpacity}/>
       </main>
     );
   }
@@ -93,15 +83,27 @@ class App extends Component {
 
   checkScroll() {
     setInterval(() => {
-      const bannerBottom = document.getElementById('hood').getBoundingClientRect().bottom;
-      const slowDown = (bannerBottom - 100)/ 50;
-      if (slowDown < 10) {
-        const newOpacity = slowDown / 10;
-        this.setState({bannerOpacity: newOpacity});
+      const bannerBottom = document.getElementById('banner').getBoundingClientRect().bottom;
+      const slowDownOpacityChange = (bannerBottom - 100)/ 50;
+      if (slowDownOpacityChange < 10) {
+        const newBannerOpacity = slowDownOpacityChange / 10;
+        this.setState({bannerOpacity: newBannerOpacity});
       } else {
         this.setState({bannerOpacity: 1});
       }
-    }, 10)
+
+      if (slowDownOpacityChange <= 1) {
+        this.setState({
+          footerOpacity: 1,
+          isSticky: true
+        });
+      } else {
+        this.setState({
+          footerOpacity: 0,
+          isSticky: false
+        });
+      }
+    }, 1)
   }
 }
 

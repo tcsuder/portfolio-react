@@ -10,5 +10,7 @@ export default {
     trail22,
     trail23
   },
-  bannerOpacity: 1
+  bannerOpacity: 1,
+  footerIsSticky: false,
+  footerOpacity: 0
 }

@@ -3,9 +3,9 @@ import propTypes from 'prop-types';
 
 function NameBanner({ image, opacity }) {
   return (
-    <div id="hood" className="hood">
+    <header id="banner" className="banner">
       <style jsx>{`
-        div.hood {
+        div.banner {
           background: linear-gradient(rgba(10,20,30,.5), rgba(0,0,0,0)), url(${image});
           background-attachment: fixed;
           background-position: center;
@@ -33,7 +33,7 @@ function NameBanner({ image, opacity }) {
       <h1 id="title" className="title">tyler
         <br/>
       <span className="last-name">suderman</span></h1>
-    </div>
+    </header>
   );
 }
 
