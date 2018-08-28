@@ -1,9 +1,9 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-function Contact() {
+function Footer() {
   return (
-    <div className="section-container">
+    <footer className="section-container">
       <style jsx>{`
         .contact-content {
           width: 100%;
@@ -16,7 +16,9 @@ function Contact() {
           width: 100%;
           display: flex;
           flex-direction: row;
-          justify-content: space-between;
+          max-width: 1000px;
+          margin: 0 auto;
+          justify-content: space-around;
         }
       `}</style>
       <div className="contact-content">
@@ -28,12 +30,12 @@ function Contact() {
           <h2><a href="https://github.com/tcsuder">Github</a></h2>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }
 
-Contact.propTypes = {
+Footer.propTypes = {
 
 }
 
-export default Contact;
+export default Footer;

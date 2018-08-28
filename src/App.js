@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import NameBanner from './NameBanner';
 import About from './About';
-import Projects from './Projects';
-import Contact from './Contact';
+import Footer from './Footer';
 import defaultState from './defaultState';
 
 const initialState = () => {
@@ -50,6 +49,7 @@ class App extends Component {
           }
           content {
             max-width: 1200px;
+            margin: 0 auto;
           }
           .section-container {
             margin: 0 auto;
@@ -79,9 +79,8 @@ class App extends Component {
         <content>
           <About
             image={this.state.photo}/>
-
-          <Contact />
         </content>
+        <Footer />
       </main>
     );
   }
