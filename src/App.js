@@ -64,7 +64,7 @@ class App extends Component {
             width: 15%;
             min-width: 100px;
             max-width: 200px;
-            height: 15px;
+            height: 25px;
             background: rgb(10,20,30);
           }
         `}</style>
@@ -74,8 +74,6 @@ class App extends Component {
             image={this.state.photo}/>
         </header>
         <content>
-          <Projects />
-
           <About
             image={this.state.photo}/>
 
@@ -94,10 +92,10 @@ class App extends Component {
   checkScroll() {
     setInterval(() => {
       const bannerBottom = document.getElementById('hood').getBoundingClientRect().bottom;
-      const slowDown = (bannerBottom - 130)/ 50;
+      const slowDown = (bannerBottom - 100)/ 50;
       if (slowDown < 10) {
         const newOpacity = slowDown / 10;
-        this.setState({bannerOpacity: newOpacity});
+        this.setState({bannerOpacity: newOpacity}, () => {console.log(this.state.bannerOpacity);});
       } else {
         this.setState({bannerOpacity: 1});
       }
