@@ -15,23 +15,36 @@ function About({ image }) {
           background-size: cover;
         }
         .about-content {
-          padding-top: 100px;
+          padding-top: 50px;
+          width: 50vw;
+        }
+        .about-content p {
+          font-family: 'Kosugi Maru', sans-serif;
+          font-size: 1.5rem;
+          line-height: 2em;
+          margin-bottom: 0;
+        }
+        .tabbed {
+          margin-left: 1em;
+          margin-top: 0;
+          line-height: 1em;
+        }
+        .break {
+          height: 15px;
+        }
+        .mission {
+          margin-top: 0;
         }
       `}</style>
-      <div className="section-title">
-        <h2>ABOUT</h2>
-        <div className="underline"></div>
-      </div>
 
       <div className="about-content">
-        <div className="about-image"></div>
-        <h1>Hi I'm Tyler!</h1>
-          {/* <h4>Into nature, technology, and the ways they fill the lives we choose</h4> */}
-        <div className="about-long">
-          <p>
-            I'm a communicator, learner, web-developer, and trail and mountain enthusiast. I care deeply about the communities I invest in, and want to be a part of their betterment. Whether that means learning a technology one level deeper, practicing ethical and sustainable outdoorsmanship, or being and advocate and ally for minorities in my community.
-          </p>
-        </div>
+        <p>Web Developer who <a href="https://www.learnhowtoprogram.com/react/react-fundamentals/introduction-to-react-3e0baf22-adf7-480c-8d02-8144ad6467b7">teaches and writes</a></p>
+        <p class='tabbed'>at <a href="https://www.epicodus.com/">Epicodus.</a></p>
+        <div class='break'></div>
+        <p>Trails and mountains in my <a href="https://www.instagram.com/tyler_suderman/">spare time.</a></p>
+        <div class='break'></div>
+        <p>I care about my communities</p>
+        <p class='tabbed'>and <a href='https://www.linkedin.com/in/tylersuderman/'>work</a> to make them bigger and better.</p>
       </div>
     </div>
   );

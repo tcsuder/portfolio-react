@@ -5,28 +5,20 @@ function Contact() {
   return (
     <div className="section-container">
       <style jsx>{`
-        .contact-section {
-          margin: 0 auto;
-          padding: 0 25%;
-          padding-top: 150px;
-          width: 50%;
+        .contact-content {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
         }
       `}</style>
-      <div className="section-title">
-        <h2>CONTACT</h2>
-        <div className="underline"></div>
+      <div className="contact-content">
+        <h2><a href="mailto:tcsuder@gmail.com?subject=Portfolio Inquery">Email</a></h2>
+        <h2>|</h2>
+        <h2><a href="https://www.linkedin.com/in/tylersuderman/">LinkedIn</a></h2>
+        <h2>|</h2>
+        <h2><a href="https://github.com/tcsuder">Github</a></h2>
       </div>
-      <div className="contact-section">
-        <div className="about-long">
-          <p>
-            tcsuder@gmail.com
-            linkedin
-            github
-            instagram
-          </p>
-        </div>
-      </div>
-
     </div>
   );
 }

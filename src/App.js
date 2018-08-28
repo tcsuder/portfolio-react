@@ -28,6 +28,9 @@ class App extends Component {
   render() {
     return (
       <main>
+        <style>
+          @import url('https://fonts.googleapis.com/css?family=Kosugi+Maru');
+        </style>
         <style global jsx>{`
           @font-face {
               font-family: 'Amiko';
@@ -50,8 +53,8 @@ class App extends Component {
           }
           .section-container {
             margin: 0 auto;
-            min-height: 600px;
-            padding-top: 100px;
+            min-height: 500px;
+            padding-top: 20px;
             width: 70%;
           }
           .section-title h2 {
@@ -59,13 +62,13 @@ class App extends Component {
             letter-spacing: -.05em;
             line-height: .8em;
             margin-bottom: 10px;
+            color: #36454f
           }
           .section-title .underline {
-            width: 15%;
-            min-width: 100px;
-            max-width: 200px;
+            width: 100%;
+            max-width: 1000px;
             height: 25px;
-            background: rgb(10,20,30);
+            background: #36454f
           }
         `}</style>
         <header>
@@ -95,7 +98,7 @@ class App extends Component {
       const slowDown = (bannerBottom - 100)/ 50;
       if (slowDown < 10) {
         const newOpacity = slowDown / 10;
-        this.setState({bannerOpacity: newOpacity}, () => {console.log(this.state.bannerOpacity);});
+        this.setState({bannerOpacity: newOpacity});
       } else {
         this.setState({bannerOpacity: 1});
       }
