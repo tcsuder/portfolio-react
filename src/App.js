@@ -96,21 +96,21 @@ class App extends Component {
 
   readMouse() {
     const links = document.getElementsByClassName('link');
-    Object.keys(links).forEach((key) => {
-      links[key].addEventListener('mouseenter', (event) => {
-        const display = this.state.linksByKey[event.target.id].displayName;
-        this.setState({ highlightedLink: display })
+    if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+      Object.keys(links).forEach((key) => {
+        links[key].addEventListener('mouseenter', (event) => {
+          const display = this.state.linksByKey[event.target.id].displayName;
+          this.setState({ highlightedLink: display })
+        });
+        links[key].addEventListener('mouseleave', (event) => {
+          this.setState({ highlightedLink: '' });
+        });
       });
-      links[key].addEventListener('mouseleave', (event) => {
-        this.setState({ highlightedLink: '' });
-      });
-    });
+    }
   }
 
   readScroll() {
-    let contentBottomLastChecked = 0;
     window.addEventListener('scroll', () => {
-      console.log('scrolling');
       const bannerBottom = document.getElementById('banner').getBoundingClientRect().bottom;
       const slowDownOpacityChange = (bannerBottom - 100)/ 50;
       if (slowDownOpacityChange < 10) {
