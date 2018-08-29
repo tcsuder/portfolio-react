@@ -8,8 +8,8 @@ function LinkText({ highlightedLink, image }) {
         #display-link {
           position: fixed;
           top: 0;r
-          left: 60%;
-          left: 60vw;
+          left: calc(450px + 10%);
+          left: calc(450px + 20vw);
           min-width: 500%;
           width: 100vw;
           min-height: 100%;
