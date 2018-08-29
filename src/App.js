@@ -45,7 +45,7 @@ class App extends Component {
           body {
             font-family: 'Amiko', sans-serif;
             color: rgb(10,20,30);
-            min-width: 700px;
+            min-width: 500px;
             margin: 0;
             padding: 0;
           }
@@ -57,7 +57,7 @@ class App extends Component {
           }
           .section-container {
             max-width: 1200px;
-            min-width: 700px;
+            min-width: 500px;
             margin: 0 auto;
             min-height: 500px;
             padding-top: 20px;
