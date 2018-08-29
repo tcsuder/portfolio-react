@@ -53,7 +53,7 @@ class App extends Component {
           a {
             color: rgb(10,20,30);
           }
-          #root, main, .section-container, .section {
+          #root, main, .section-container {
             min-width: inherit;
           }
           .section-container {
@@ -64,6 +64,7 @@ class App extends Component {
             width: 70%;
           }
           .section {
+            min-width: 480px;
             padding-left: 20px;
             padding-top: calc(100px + 5vw);
             padding-bottom: calc(100px + 5vw);
