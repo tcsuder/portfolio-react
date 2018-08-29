@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import NameBanner from './NameBanner';
 import About from './About';
-import Footer from './Footer';
 import defaultState from './defaultState';
 
 const initialState = () => {
@@ -9,21 +8,23 @@ const initialState = () => {
     imageList: defaultState.imageList,
     photo: defaultState.imageList['trail3'],
     bannerOpacity: defaultState.bannerOpacity,
-    footerIsSticky: defaultState.footerIsSticky,
-    footerOpacity: defaultState.footerOpacity
+    linksByKey: defaultState.linksByKey,
+    highlightedLink: ''
   }
 }
 
 class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = initialState();
+    this.highlightLink = this.highlightLink.bind(this);
   }
 
   componentDidMount() {
     this.loadRandomImage();
     document.title = "Portfolio - Tyler Suderman";
-    this.checkScroll()
+    this.readScroll();
+    this.readMouse();
   }
 
   render() {
@@ -60,25 +61,80 @@ class App extends Component {
             min-width: 500px;
             margin: 0 auto;
             min-height: 500px;
-            padding-top: 20px;
             width: 70%;
           }
           .section {
             padding-left: 20px;
             padding-top: calc(100px + 5vw);
+            padding-bottom: calc(100px + 5vw);
             width: 50vw;
+          }
+          #display-link {
+            position: fixed;
+            top: 0;r
+            left: 60%;
+            left: 70vw;
+            min-width: 500%;
+            width: 100vw;
+            min-height: 100%;
+            height: 100vh;
+            background: linear-gradient(rgba(10,20,30,.8), rgba(0,0,0,0)), url(${this.state.photo});
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 580px;
+            overflow: hidden;
+          }
+          #display-link ul {
+            list-style: none;
+            width: 70px;
+            padding-top: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          }
+          #display-link li h1 {
+            margin: 0;
+            line-height: .75em;
+            font-size: 5rem;
+            font-size: 7rem;
+          }
+          pre {
+            font-family: 'Amiko', sans-serif;
+            color: rgb(10,20,30);
+            margin: 0;
+            color: white;
           }
         `}</style>
         <NameBanner
           opacity={this.state.bannerOpacity}
           image={this.state.photo}/>
-        <About />
-        <Footer
-          isSticky={this.state.footerIsSticky}
-          opacity={this.state.footerOpacity}
-          image={this.state.photo}/>
+          {
+            this.state.highlightedLink ? (
+              <div id="display-link">
+                <ul>
+                  {this.state.highlightedLink.split('').map((char, i) => {
+                    return (
+                      <li key={i}>
+                        <h1><pre>{char.toUpperCase()}</pre></h1>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </div>
+            ) : <pre></pre>
+          }
+
+        <About
+          links={this.state.linksByKey}
+          highlightLink={this.highlightLink}/>
       </main>
     );
+  }
+
+  highlightLink(link) {
+    this.setSate({highlightedLink: link})
   }
 
   loadRandomImage() {
@@ -87,14 +143,24 @@ class App extends Component {
     this.setState({photo: this.state.imageList[randomKey]});
   }
 
-  checkScroll() {
+  readMouse() {
+    const links = document.getElementsByClassName('link');
+    Object.keys(links).forEach((key) => {
+      links[key].addEventListener('mouseenter', (event) => {
+        const display = this.state.linksByKey[event.target.id].displayName;
+        this.setState({ highlightedLink: display })
+      });
+      links[key].addEventListener('mouseleave', (event) => {
+        this.setState({ highlightedLink: '' });
+      });
+    });
+  }
+
+  readScroll() {
+    let contentBottomLastChecked = 0;
     window.addEventListener('scroll', () => {
       console.log('scrolling');
-    })
-    let contentBottomLastChecked = 0;
-    setInterval(() => {
       const bannerBottom = document.getElementById('banner').getBoundingClientRect().bottom;
-      const contentBottom = window.innerHeight - document.getElementById('about').getBoundingClientRect().bottom;
       const slowDownOpacityChange = (bannerBottom - 100)/ 50;
       if (slowDownOpacityChange < 10) {
         const newBannerOpacity = slowDownOpacityChange / 10;
@@ -102,25 +168,7 @@ class App extends Component {
       } else {
         this.setState({bannerOpacity: 1});
       }
-      if (contentBottomLastChecked > contentBottom) {
-        this.setState({
-          footerOpacity: 0,
-          isSticky: false
-        });
-      } else if (contentBottom >= 200) {
-        contentBottomLastChecked = contentBottom;
-        console.log(contentBottomLastChecked);
-        this.setState({
-          footerOpacity: 1,
-          isSticky: true
-        });
-      } else {
-        this.setState({
-          footerOpacity: 0,
-          isSticky: false
-        });
-      }
-    }, 10)
+    });
   }
 }
 
