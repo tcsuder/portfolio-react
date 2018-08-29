@@ -5,10 +5,6 @@ function About() {
   return (
     <div id="about" className="section-container">
       <style jsx>{`
-        .section {
-          padding-top: 100px;
-          width: 50vw;
-        }
         .section p {
           font-family: 'Kosugi Maru', sans-serif;
           font-size: 1.5rem;

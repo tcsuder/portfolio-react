@@ -49,6 +49,9 @@ class App extends Component {
             margin: 0;
             padding: 0;
           }
+          a {
+            color: rgb(10,20,30);
+          }
           #root, main, .section-container, .section {
             min-width: inherit;
           }
@@ -62,6 +65,8 @@ class App extends Component {
           }
           .section {
             padding-left: 20px;
+            padding-top: calc(100px + 5vw);
+            width: 50vw;
           }
         `}</style>
         <NameBanner
@@ -70,7 +75,8 @@ class App extends Component {
         <About />
         <Footer
           isSticky={this.state.footerIsSticky}
-          opacity={this.state.footerOpacity}/>
+          opacity={this.state.footerOpacity}
+          image={this.state.photo}/>
       </main>
     );
   }
@@ -82,8 +88,13 @@ class App extends Component {
   }
 
   checkScroll() {
+    window.addEventListener('scroll', () => {
+      console.log('scrolling');
+    })
+    let contentBottomLastChecked = 0;
     setInterval(() => {
       const bannerBottom = document.getElementById('banner').getBoundingClientRect().bottom;
+      const contentBottom = window.innerHeight - document.getElementById('about').getBoundingClientRect().bottom;
       const slowDownOpacityChange = (bannerBottom - 100)/ 50;
       if (slowDownOpacityChange < 10) {
         const newBannerOpacity = slowDownOpacityChange / 10;
@@ -91,8 +102,14 @@ class App extends Component {
       } else {
         this.setState({bannerOpacity: 1});
       }
-
-      if (slowDownOpacityChange <= 1) {
+      if (contentBottomLastChecked > contentBottom) {
+        this.setState({
+          footerOpacity: 0,
+          isSticky: false
+        });
+      } else if (contentBottom >= 200) {
+        contentBottomLastChecked = contentBottom;
+        console.log(contentBottomLastChecked);
         this.setState({
           footerOpacity: 1,
           isSticky: true
@@ -103,7 +120,7 @@ class App extends Component {
           isSticky: false
         });
       }
-    }, 1)
+    }, 10)
   }
 }
 
