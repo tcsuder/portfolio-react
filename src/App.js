@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import NameBanner from './NameBanner';
 import About from './About';
+import LinkText from './LinkText';
 import defaultState from './defaultState';
 
 const initialState = () => {
   return {
     imageList: defaultState.imageList,
-    photo: defaultState.imageList['trail3'],
+    image: defaultState.imageList['trail3'],
     bannerOpacity: defaultState.bannerOpacity,
     linksByKey: defaultState.linksByKey,
     highlightedLink: ''
@@ -30,10 +31,8 @@ class App extends Component {
   render() {
     return (
       <main>
-        <style>
-          @import url('https://fonts.googleapis.com/css?family=Kosugi+Maru');
-        </style>
         <style global jsx>{`
+          @import url('https://fonts.googleapis.com/css?family=Kosugi+Maru');
           @font-face {
               font-family: 'Amiko';
               src: url(${require('./fonts/Amiko-Bold.eot')});
@@ -69,63 +68,15 @@ class App extends Component {
             padding-bottom: calc(100px + 5vw);
             width: 50vw;
           }
-          #display-link {
-            position: fixed;
-            top: 0;r
-            left: 60%;
-            left: 60vw;
-            min-width: 500%;
-            width: 100vw;
-            min-height: 100%;
-            height: 100vh;
-            background: linear-gradient(rgba(251,222,222,.4), rgba(10,20,30,.9)), url(${this.state.photo});
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            height: 580px;
-            overflow: hidden;
-          }
-          #display-link ul {
-            list-style: none;
-            width: 70px;
-            padding-top: 100px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-          }
-          #display-link li h1 {
-            margin: 0;
-            line-height: .75em;
-            font-size: 7rem;
-            font-size: calc(6rem + 3vw);
-          }
-          pre {
-            font-family: 'Amiko', sans-serif;
-            color: rgb(10,20,30);
-            margin: 0;
-            color: white;
-          }
         `}</style>
         <NameBanner
           opacity={this.state.bannerOpacity}
-          image={this.state.photo}/>
-          {
-            this.state.highlightedLink ? (
-              <div id="display-link">
-                <ul>
-                  {this.state.highlightedLink.split('').map((char, i) => {
-                    return (
-                      <li key={i}>
-                        <h1><pre>{char.toUpperCase()}</pre></h1>
-                      </li>
-                    )
-                  })}
-                </ul>
-              </div>
-            ) : <pre></pre>
-          }
-
+          image={this.state.image}/>
+        {this.state.highlightedLink ? (
+          <LinkText
+            highlightedLink={this.state.highlightedLink}
+            image={this.state.image}/>
+        ): null}
         <About
           links={this.state.linksByKey}
           highlightLink={this.highlightLink}/>
@@ -140,7 +91,7 @@ class App extends Component {
   loadRandomImage() {
     const keys = Object.keys(this.state.imageList);
     const randomKey = keys[Math.floor(Math.random() * (Object.keys(this.state.imageList).length - 0))];
-    this.setState({photo: this.state.imageList[randomKey]});
+    this.setState({image: this.state.imageList[randomKey]});
   }
 
   readMouse() {
