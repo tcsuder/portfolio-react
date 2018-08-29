@@ -12,12 +12,14 @@ function NameBanner({ image, opacity }) {
           background-repeat: no-repeat;
           background-size: cover;
           height: 580px;
+          height: calc(500px + 10vw);
           overflow: hidden;
         }
         h1.title {
           background: rgba(255,255,255,${opacity});
           color: rgba(0,0,0,1);
           font-size: 18em;
+          font-size: calc(10em + 10vw);
           font-family: 'Amiko';
           letter-spacing: -.02em;
           line-height: .6em;
