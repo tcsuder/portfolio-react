@@ -26,6 +26,7 @@ class App extends Component {
     document.title = "TYLER SUDERMAN";
     this.readScroll();
     this.readMouse();
+    this.readScreenWidth();
   }
 
   render() {
@@ -92,6 +93,12 @@ class App extends Component {
     const keys = Object.keys(this.state.imageList);
     const randomKey = keys[Math.floor(Math.random() * (Object.keys(this.state.imageList).length - 0))];
     this.setState({image: this.state.imageList[randomKey]});
+  }
+
+  readScreenWidth() {
+    if (window.screen.width < 700) {
+      this.setState({imageList: defaultState.smallImageList});
+    }
   }
 
   readMouse() {
