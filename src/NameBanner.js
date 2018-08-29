@@ -1,55 +1,44 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import colorHood from './images/colorHood.jpg';
 
-
-function NameBanner({didScroll, changeImage, defaultImage}) {
+function NameBanner({ image, opacity }) {
   return (
-    <div className="hood">
+    <header id="banner" className="banner">
       <style jsx>{`
-        div.hood {
-          margin-top: 100px;
-          background: linear-gradient(rgba(0,0,0,.8), rgba(251,222,222,.8)), url(${defaultImage});
+        header.banner {
+          background: linear-gradient(rgba(10,20,30,.5), rgba(0,0,0,0)), url(${image});
           background-attachment: fixed;
           background-position: center;
           background-repeat: no-repeat;
           background-size: cover;
-          height: 275px;
+          height: 580px;
+          overflow: hidden;
         }
         h1.title {
-          background: #fff;
-          border-bottom: 10px solid #524B4C;
-          font-family: 'Kameron', serif;
-          font-size: 12em;
-          line-height: .65em;
-          margin: 0 auto;
+          background: rgba(255,255,255,${opacity});
+          color: rgba(0,0,0,1);
+          font-size: 18em;
+          font-family: 'Amiko';
+          letter-spacing: -.02em;
+          line-height: .6em;
+          margin: 0;
           mix-blend-mode: screen;
-          padding-bottom: 20px;
+          padding-top: 150px;
+          transition: .5s;
         }
         span.last-name {
-          font-size: .9em;
+          font-size: .666em;
         }
       `}</style>
-      {didScroll &&
-        <style jsx>{`
-          div.hood {
-            background: linear-gradient(rgba(0,0,0,.8), rgba(251,222,222,.8)), url(${changeImage});
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            height: 275px;
-          }
-        `}</style>}
-      <h1 className="title">TYLER <span className="last-name">SUDERMAN</span></h1>
-    </div>
+      <h1 id="title" className="title">tyler
+        <br/>
+      <span className="last-name">suderman</span></h1>
+    </header>
   );
 }
 
 NameBanner.propTypes = {
-  changeImage: propTypes.string.isRequired,
-  defaultImage: propTypes.string.isRequired,
-  didScroll: propTypes.bool.isRequired
+  image: propTypes.string.isRequired
 }
 
 export default NameBanner;
