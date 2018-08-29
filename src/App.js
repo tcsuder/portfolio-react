@@ -89,7 +89,7 @@ class App extends Component {
           #display-link ul {
             list-style: none;
             width: 70px;
-            padding-top: 50px;
+            padding-top: 100px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -97,8 +97,8 @@ class App extends Component {
           #display-link li h1 {
             margin: 0;
             line-height: .75em;
-            font-size: 5rem;
             font-size: 7rem;
+            font-size: calc(6rem + 3vw);
           }
           pre {
             font-family: 'Amiko', sans-serif;
