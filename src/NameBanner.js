@@ -6,7 +6,7 @@ function NameBanner({ image, opacity }) {
     <header id="banner" className="banner">
       <style jsx>{`
         header.banner {
-          background: linear-gradient(rgba(10,20,30,.5), rgba(0,0,0,0)), url(${image});
+          background: linear-gradient(rgba(251,222,222,.4), rgba(10,20,30,.9)), url(${image});
           background-attachment: fixed;
           background-position: center;
           background-repeat: no-repeat;

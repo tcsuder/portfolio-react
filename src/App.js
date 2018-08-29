@@ -73,12 +73,12 @@ class App extends Component {
             position: fixed;
             top: 0;r
             left: 60%;
-            left: 70vw;
+            left: 60vw;
             min-width: 500%;
             width: 100vw;
             min-height: 100%;
             height: 100vh;
-            background: linear-gradient(rgba(10,20,30,.8), rgba(0,0,0,0)), url(${this.state.photo});
+            background: linear-gradient(rgba(251,222,222,.4), rgba(10,20,30,.9)), url(${this.state.photo});
             background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
