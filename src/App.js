@@ -23,7 +23,7 @@ class App extends Component {
 
   componentDidMount() {
     this.loadRandomImage();
-    document.title = "Portfolio - Tyler Suderman";
+    document.title = "TYLER SUDERMAN";
     this.readScroll();
     this.readMouse();
   }
