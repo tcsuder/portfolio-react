@@ -44,7 +44,12 @@ function About({ links: { github, curriculum, epicodus, instagram, linkedin, ema
 }
 
 About.propTypes = {
-
+  github: propTypes.object,
+  curriculum: propTypes.object,
+  epicodus: propTypes.object,
+  instagram: propTypes.object,
+  linkedin: propTypes.object,
+  email: propTypes.object
 }
 
 export default About;

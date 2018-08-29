@@ -8,8 +8,8 @@ function LinkText({ highlightedLink, image }) {
         #display-link {
           position: fixed;
           top: 0;r
-          left: calc(450px + 10%);
-          left: calc(450px + 20vw);
+          left: calc(250px + 30%);
+          left: calc(250px + 35vw);
           min-width: 500%;
           width: 100vw;
           min-height: 100%;
@@ -59,7 +59,8 @@ function LinkText({ highlightedLink, image }) {
 }
 
 LinkText.propTypes = {
-
+  highlightLink: propTypes.string.isRequired,
+  image: propTypes.string.isRequired
 }
 
 export default LinkText;

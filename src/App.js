@@ -10,7 +10,9 @@ const initialState = () => {
     image: defaultState.imageList['trail3'],
     bannerOpacity: defaultState.bannerOpacity,
     linksByKey: defaultState.linksByKey,
-    highlightedLink: ''
+    highlightedLink: '',
+    narrowView: false,
+    mobileView: false
   }
 }
 
@@ -25,8 +27,8 @@ class App extends Component {
     this.loadRandomImage();
     document.title = "TYLER SUDERMAN";
     this.readScroll();
-    this.readMouse();
-    this.readScreenWidth();
+    this.readScreenOnLoad();
+    this.readWindowResize();
   }
 
   render() {
@@ -73,8 +75,9 @@ class App extends Component {
         `}</style>
         <NameBanner
           opacity={this.state.bannerOpacity}
-          image={this.state.image}/>
-        {this.state.highlightedLink ? (
+          image={this.state.image}
+          mobile={this.state.mobileView}/>
+        {this.state.highlightedLink && !this.state.narrowView ? (
           <LinkText
             highlightedLink={this.state.highlightedLink}
             image={this.state.image}/>
@@ -96,25 +99,43 @@ class App extends Component {
     this.setState({image: this.state.imageList[randomKey]});
   }
 
-  readScreenWidth() {
-    if (window.screen.width < 700) {
-      this.setState({imageList: defaultState.smallImageList});
+  readScreenOnLoad() {
+    if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+      this.setMouseEvents();
+      const screenWidth = window.visualViewport.width;
+      if (screenWidth < 500) {
+        this.setState({
+          imageList: defaultState.smallImageList,
+          narrowView: true
+        });
+      } else {
+        this.setState({
+          imageList: defaultState.imageList,
+          narrowView: false
+        });
+      }
+    } else {
+      this.setState({mobileView: true})
     }
   }
 
-  readMouse() {
+  readWindowResize() {
+    window.addEventListener('resize', () => {
+      this.readScreenOnLoad();
+    })
+  }
+
+  setMouseEvents() {
     const links = document.getElementsByClassName('link');
-    if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
-      Object.keys(links).forEach((key) => {
-        links[key].addEventListener('mouseenter', (event) => {
-          const display = this.state.linksByKey[event.target.id].displayName;
-          this.setState({ highlightedLink: display })
-        });
-        links[key].addEventListener('mouseleave', (event) => {
-          this.setState({ highlightedLink: '' });
-        });
+    Object.keys(links).forEach((key) => {
+      links[key].addEventListener('mouseenter', (event) => {
+        const display = this.state.linksByKey[event.target.id].displayName;
+        this.setState({ highlightedLink: display })
       });
-    }
+      links[key].addEventListener('mouseleave', (event) => {
+        this.setState({ highlightedLink: '' });
+      });
+    });
   }
 
   readScroll() {

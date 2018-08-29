@@ -1,7 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-function NameBanner({ image, opacity }) {
+function NameBanner({ image, opacity, mobile }) {
   return (
     <header id="banner" className="banner">
       <style jsx>{`
@@ -18,8 +18,8 @@ function NameBanner({ image, opacity }) {
         h1.title {
           background: rgba(255,255,255,${opacity});
           color: rgba(0,0,0,1);
-          font-size: 18em;
-          font-size: calc(10em + 10vw);
+          font-size: 14em;
+          font-size: ${!mobile ? `calc(10em + 10vw)`: `10em` };
           font-family: 'Amiko';
           letter-spacing: -.02em;
           line-height: .6em;
@@ -40,7 +40,9 @@ function NameBanner({ image, opacity }) {
 }
 
 NameBanner.propTypes = {
-  image: propTypes.string.isRequired
+  image: propTypes.string.isRequired,
+  opacity: propTypes.number.isRequired,
+  mobile: propTypes.bool.isRequired
 }
 
 export default NameBanner;
