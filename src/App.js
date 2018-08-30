@@ -6,12 +6,12 @@ import defaultState from './defaultState';
 
 const initialState = () => {
   return {
-    imageList: defaultState.imageList,
+    imageList: defaultState.smallImageList,
     image: defaultState.imageList['trail3'],
     bannerOpacity: defaultState.bannerOpacity,
     linksByKey: defaultState.linksByKey,
     highlightedLink: '',
-    narrowView: false,
+    narrowView: true,
     mobileView: false
   }
 }
@@ -24,11 +24,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.loadRandomImage();
     document.title = "TYLER SUDERMAN";
     this.readScroll();
-    this.readScreenOnLoad();
-    this.readWindowResize();
+    this.readScreen();
+    this.readScreenOnResize();
   }
 
   render() {
@@ -99,29 +98,40 @@ class App extends Component {
     this.setState({image: this.state.imageList[randomKey]});
   }
 
-  readScreenOnLoad() {
-    if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
-      this.setMouseEvents();
-      const screenWidth = window.visualViewport.width;
-      if (screenWidth < 500) {
-        this.setState({
-          imageList: defaultState.smallImageList,
-          narrowView: true
-        });
-      } else {
-        this.setState({
-          imageList: defaultState.imageList,
-          narrowView: false
-        });
-      }
+  readScreen() {
+    let narrowView = this.state.narrowView;
+    let mobileView = this.state.mobileView;
+    let imageList = Object.assign({}, this.state.imageList);
+    const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent);
+    const screenWidth = window.visualViewport.width;
+
+    if (mobile) {
+      mobileView = true;
     } else {
-      this.setState({mobileView: true})
+      this.setMouseEvents();
     }
+
+    if (screenWidth > 500) {
+      narrowView = false;
+    }
+
+    if (!mobile && screenWidth > 500) {
+      imageList = Object.assign({}, defaultState.imageList);
+    }
+
+    this.setState({
+      mobileView,
+      narrowView,
+      imageList
+    }, () => {
+      this.loadRandomImage();
+    })
+
   }
 
-  readWindowResize() {
+  readScreenOnResize() {
     window.addEventListener('resize', () => {
-      this.readScreenOnLoad();
+      this.readScreen();
     })
   }
 

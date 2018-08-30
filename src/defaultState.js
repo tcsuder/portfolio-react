@@ -4,8 +4,6 @@ import trail20 from './images/trail20.jpg';
 import trail22 from './images/trail22.jpg';
 import trail23 from './images/trail23.jpg';
 import trail3mobile from './images/trail3mobile.jpg';
-import trail10mobile from './images/trail10mobile.jpg';
-import trail20mobile from './images/trail20mobile.jpg';
 import trail22mobile from './images/trail22mobile.jpg';
 import trail23mobile from './images/trail23mobile.jpg';
 
@@ -19,8 +17,6 @@ export default {
   },
   smallImageList: {
     trail3mobile,
-    trail10mobile,
-    trail20mobile,
     trail22mobile,
     trail23mobile,
   },
