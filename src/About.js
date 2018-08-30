@@ -35,7 +35,7 @@ function About({ links: { github, curriculum, epicodus, instagram, linkedin, ema
         <div className='break'></div>
         <p>I care about communities</p>
         <p className='tabbed'>and <a id="linkedin" className="link" target="_blank" rel="noopener noreferrer" href='https://www.linkedin.com/in/tylersuderman/'>work</a> to make mine</p>
-        <p className='tabbed'>inclusive and producive.</p>
+        <p className='tabbed'>inclusive and productive.</p>
         <div className='break'></div>
         <p><a id="email" className="link" target="_blank" rel="noopener noreferrer" href="mailto:tcsuder@gmail.com?subject=Portfolio Inquery">Let's connect!</a></p>
       </div>

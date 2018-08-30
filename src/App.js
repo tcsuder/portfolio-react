@@ -105,7 +105,8 @@ class App extends Component {
     let imageSet = this.state.imageSet;
     let imageList = Object.assign({}, this.state.imageList);
     const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent);
-    const screenWidth = window.visualViewport.width;
+    console.log(window.innerWidth);
+    const screenWidth = window.innerWidth;
 
     if (mobile) {
       mobileView = true;
@@ -132,7 +133,7 @@ class App extends Component {
         imageSet = true;
         this.setState({imageSet});
       }
-    })
+    });
 
   }
 
