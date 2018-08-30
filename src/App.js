@@ -8,6 +8,7 @@ const initialState = () => {
   return {
     imageList: defaultState.smallImageList,
     image: defaultState.imageList['trail3'],
+    imageSet: false,
     bannerOpacity: defaultState.bannerOpacity,
     linksByKey: defaultState.linksByKey,
     highlightedLink: '',
@@ -101,6 +102,7 @@ class App extends Component {
   readScreen() {
     let narrowView = this.state.narrowView;
     let mobileView = this.state.mobileView;
+    let imageSet = this.state.imageSet;
     let imageList = Object.assign({}, this.state.imageList);
     const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent);
     const screenWidth = window.visualViewport.width;
@@ -122,9 +124,14 @@ class App extends Component {
     this.setState({
       mobileView,
       narrowView,
-      imageList
+      imageList,
+      imageSet
     }, () => {
-      this.loadRandomImage();
+      if (!imageSet) {
+        this.loadRandomImage();
+        imageSet = true;
+        this.setState({imageSet});
+      }
     })
 
   }
