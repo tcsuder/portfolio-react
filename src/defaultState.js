@@ -28,7 +28,7 @@ export default {
     },
     curriculum: {
       displayName: 'lessons',
-      href: 'https://www.learnhowtoprogram.com/react/react-fundamentals/introduction-to-react-3e0baf22-adf7-480c-8d02-8144ad6467b7',
+      href: 'https://www.learnhowtoprogram.com/react',
       displayText: 'teaches and writes'
     },
     epicodus: {
@@ -48,7 +48,7 @@ export default {
     },
     email: {
       displayName: 'email',
-      href: 'mailto:tcsuder@gmail.com?subject=Portfolio Inquery',
+      href: 'mailto:tcsuder@gmail.com?subject=hello from portfolio!',
       displayText: "Let's connect!"
     }
   },

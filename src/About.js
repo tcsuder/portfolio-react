@@ -4,16 +4,12 @@ import Link from './Link';
 
 function About({ links, highlight }) {
 
-  // Object.keys(links).forEach((key) => {
-  //     links[key].addEventListener('mouseenter', (event) => {
-  //       const display = this.state.linksByKey[event.target.id].displayName;
-  //       this.setState({ highlightedLink: display })
-  //     });
-  //     links[key].addEventListener('mouseleave', (event) => {
-  //       this.setState({ highlightedLink: '' });
-  //     });
-  //   });
-  //
+  // here's a tricky block of code that just makes the link components below... maybe... a little easier to read.
+  const text = {};
+  Object.keys(links).forEach((key) => {
+    text[links[key].displayText] = links[key];
+  });
+
   return (
     <div id="about" className="section-container">
       <style jsx>{`
@@ -39,28 +35,28 @@ function About({ links, highlight }) {
 
       <div className="section">
         <p>
-          A <Link highlight={highlight} link={links.github}/>
+          A <Link link={text['web engineer']} highlight={highlight}/>
         </p>
         <p className="tabbed">
-          who <Link highlight={highlight} link={links.curriculum}/>
+          who <Link link={text['teaches and writes']} highlight={highlight}/>
         </p>
         <p className='tabbed'>
-          at <Link highlight={highlight} link={links.epicodus}/>
+          at <Link link={text['Epicodus.']} highlight={highlight}/>
         </p>
         <div className='break'></div>
         <p>On trails and in mountains</p>
         <p className='tabbed'>
-          in my <Link highlight={highlight} link={links.instagram}/>
+          in my <Link link={text['spare time.']} highlight={highlight}/>
         </p>
         <div className='break'></div>
         <p>I care about communities</p>
         <p className='tabbed'>
-          and <Link highlight={highlight} link={links.linkedin}/> to make mine
+          and <Link link={text['work']} highlight={highlight}/> to make mine
         </p>
         <p className='tabbed'>inclusive and productive.</p>
         <div className='break'></div>
         <p>
-          <Link highlight={highlight} link={links.email}/>
+          <Link link={text["Let's connect!"]} highlight={highlight}/>
         </p>
       </div>
     </div>
