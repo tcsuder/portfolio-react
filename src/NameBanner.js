@@ -26,7 +26,7 @@ function NameBanner({ image, opacity, wideScreen }) {
           margin: 0;
           mix-blend-mode: screen;
           padding-top: 150px;
-          transition: .5s;
+          transition: .2s;
         }
         span.last-name {
           font-size: .666em;

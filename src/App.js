@@ -29,7 +29,7 @@ class App extends Component {
     this.setImageState(inWideScreen);
 
     window.addEventListener('scroll', () => {
-      this.setBannerOpacity();
+      this.setBannerOpacity(this.state.highlightedLink);
     });
     window.addEventListener('resize', () => {
       this.checkScreenWidth();
@@ -94,6 +94,7 @@ class App extends Component {
   }
 
   highlightLink(link) {
+    this.setBannerOpacity(link);
     this.setState({highlightedLink: link});
   }
 
@@ -118,15 +119,18 @@ class App extends Component {
     return imageList[randomKey];
   }
 
-  setBannerOpacity() {
+  setBannerOpacity(link) {
     const bannerBottom = document.getElementById('banner').getBoundingClientRect().bottom;
     const slowDownOpacityChange = (bannerBottom - 100)/ 50;
-    if (slowDownOpacityChange < 10) {
-      const newBannerOpacity = slowDownOpacityChange / 10;
-      this.setState({bannerOpacity: newBannerOpacity});
-    } else {
-      this.setState({bannerOpacity: 1});
+    let newBannerOpacity = slowDownOpacityChange / 10;
+    console.log(slowDownOpacityChange);
+    if (slowDownOpacityChange > 10) {
+      newBannerOpacity = 1;
     }
+    if (link !== '') {
+      newBannerOpacity -= .4;
+    }
+    this.setState({bannerOpacity: newBannerOpacity});
   }
 
   componentWillUnmount() {
