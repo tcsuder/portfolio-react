@@ -8,7 +8,7 @@ import trail22mobile from './images/trail22mobile.jpg';
 import trail23mobile from './images/trail23mobile.jpg';
 
 export default {
-  imageList: {
+  largeImageList: {
     trail3,
     trail10,
     trail20,
@@ -24,35 +24,33 @@ export default {
     github: {
       displayName: 'github',
       href: 'https://github.com/tcsuder/portfolio-react',
-      description: 'github'
+      displayText: 'web engineer'
     },
     curriculum: {
       displayName: 'lessons',
       href: 'https://www.learnhowtoprogram.com/react/react-fundamentals/introduction-to-react-3e0baf22-adf7-480c-8d02-8144ad6467b7',
-      description: ''
+      displayText: 'teaches and writes'
     },
     epicodus: {
       displayName: 'Epicodus',
       href: 'https://www.epicodus.com/',
-      description: ''
+      displayText: 'Epicodus.'
     },
     instagram: {
       displayName: 'instagram',
       href: 'https://www.instagram.com/tyler_suderman/',
-      description: ''
+      displayText: 'spare time.'
     },
     linkedin: {
       displayName: 'linkedIn',
       href: 'https://www.linkedin.com/in/tylersuderman/',
-      description: ''
+      displayText: 'work'
     },
     email: {
       displayName: 'email',
       href: 'mailto:tcsuder@gmail.com?subject=Portfolio Inquery',
-      description: ''
+      displayText: "Let's connect!"
     }
   },
-  bannerOpacity: 1,
-  footerIsSticky: false,
-  footerOpacity: 0
+  bannerOpacity: 1
 }

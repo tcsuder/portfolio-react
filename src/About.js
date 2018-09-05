@@ -1,7 +1,19 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import Link from './Link';
 
-function About({ links: { github, curriculum, epicodus, instagram, linkedin, email } }) {
+function About({ links, highlight }) {
+
+  // Object.keys(links).forEach((key) => {
+  //     links[key].addEventListener('mouseenter', (event) => {
+  //       const display = this.state.linksByKey[event.target.id].displayName;
+  //       this.setState({ highlightedLink: display })
+  //     });
+  //     links[key].addEventListener('mouseleave', (event) => {
+  //       this.setState({ highlightedLink: '' });
+  //     });
+  //   });
+  //
   return (
     <div id="about" className="section-container">
       <style jsx>{`
@@ -26,30 +38,38 @@ function About({ links: { github, curriculum, epicodus, instagram, linkedin, ema
       `}</style>
 
       <div className="section">
-        <p>A <a id="github" className="link" target="_blank" rel="noopener noreferrer" href={github.href}>web engineer</a></p>
-        <p className="tabbed">who <a id="curriculum" className="link" target="_blank" rel="noopener noreferrer" href="https://www.learnhowtoprogram.com/react/react-fundamentals/introduction-to-react-3e0baf22-adf7-480c-8d02-8144ad6467b7">teaches and writes</a></p>
-        <p className='tabbed'>at <a id="epicodus" className="link" target="_blank" rel="noopener noreferrer" href="https://www.epicodus.com/">Epicodus.</a></p>
+        <p>
+          A <Link highlight={highlight} link={links.github}/>
+        </p>
+        <p className="tabbed">
+          who <Link highlight={highlight} link={links.curriculum}/>
+        </p>
+        <p className='tabbed'>
+          at <Link highlight={highlight} link={links.epicodus}/>
+        </p>
         <div className='break'></div>
         <p>On trails and in mountains</p>
-        <p className='tabbed'>in my <a id="instagram" className="link" target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/tyler_suderman/">spare time.</a></p>
+        <p className='tabbed'>
+          in my <Link highlight={highlight} link={links.instagram}/>
+        </p>
         <div className='break'></div>
         <p>I care about communities</p>
-        <p className='tabbed'>and <a id="linkedin" className="link" target="_blank" rel="noopener noreferrer" href='https://www.linkedin.com/in/tylersuderman/'>work</a> to make mine</p>
+        <p className='tabbed'>
+          and <Link highlight={highlight} link={links.linkedin}/> to make mine
+        </p>
         <p className='tabbed'>inclusive and productive.</p>
         <div className='break'></div>
-        <p><a id="email" className="link" target="_blank" rel="noopener noreferrer" href="mailto:tcsuder@gmail.com?subject=Portfolio Inquery">Let's connect!</a></p>
+        <p>
+          <Link highlight={highlight} link={links.email}/>
+        </p>
       </div>
     </div>
   );
 }
 
 About.propTypes = {
-  github: propTypes.object,
-  curriculum: propTypes.object,
-  epicodus: propTypes.object,
-  instagram: propTypes.object,
-  linkedin: propTypes.object,
-  email: propTypes.object
+  links: propTypes.object.isRequired,
+  highlight: propTypes.func.isRequired
 }
 
 export default About;

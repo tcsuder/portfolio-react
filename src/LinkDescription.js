@@ -1,9 +1,9 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-function LinkText({ highlightedLink, image }) {
-  return (
-    <div>
+function LinkDescription({ highlightedLink, image, wideScreen }) {
+  return highlightedLink && wideScreen ?
+    (<div>
       <style jsx>{`
         #display-link {
           position: fixed;
@@ -26,6 +26,7 @@ function LinkText({ highlightedLink, image }) {
           list-style: none;
           width: 70px;
           padding-top: 100px;
+          padding-left: 20px;
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -54,13 +55,13 @@ function LinkText({ highlightedLink, image }) {
           })}
         </ul>
       </div>
-    </div>
-  );
+    </div>) : null;
 }
 
-LinkText.propTypes = {
-  highlightLink: propTypes.string.isRequired,
-  image: propTypes.string.isRequired
+LinkDescription.propTypes = {
+  highlightedLink: propTypes.string.isRequired,
+  image: propTypes.string.isRequired,
+  wideScreen: propTypes.bool.isRequired
 }
 
-export default LinkText;
+export default LinkDescription;
